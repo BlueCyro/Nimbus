@@ -4,7 +4,7 @@ using ResoniteModLoader;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace Cumulonimbus;
+namespace Nimbus;
 
 public class Nimbus : ResoniteMod
 {

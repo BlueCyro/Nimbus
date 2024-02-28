@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Concurrent;
-using System.Diagnostics;
 using System.Text;
 
 
-namespace Cumulonimbus;
+namespace Nimbus;
 
 public static class NET8_Helpers
 {
@@ -13,8 +11,9 @@ public static class NET8_Helpers
         {"System.Private.CoreLib", ", mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"},
         {"System.Private.Uri", ", System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"}
     };
-
     public static readonly ConcurrentDictionary<Type, string> typeLookups = new();
+
+
 
     public static string GetLegacy(this Type type, bool qualify = false, StringBuilder? builder = null)
     {   
