@@ -1,4 +1,4 @@
-# 💨🌩️ Nimbus
+# 🌩️💨 Nimbus
 Compatibility patches for the Resonite Headless server to enable greater .NET 8 compatibility
 
 - Ensures that types sent to the client are compatible, allowing normal clients to join
