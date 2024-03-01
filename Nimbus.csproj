@@ -14,40 +14,37 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <ResonitePath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\Resonite\')">C:\Program Files (x86)\Steam\steamapps\common\Resonite\</ResonitePath>
-		<ResonitePath Condition="Exists('$(HOME)/.steam/steam/steamapps/common/Resonite/')">$(HOME)/.steam/steam/steamapps/common/Resonite/</ResonitePath>
-		<ResonitePath Condition="Exists('R:\SteamLibrary\steamapps\common\Resonite\')">R:\SteamLibrary\steamapps\common\Resonite\</ResonitePath>
-    <HeadlessPath>$(ResonitePath)Headless\</HeadlessPath>
-    <ManagedPath Condition="'$(DefineConstants)' == 'HEADLESS_PRESENT'">$(HeadlessPath)</ManagedPath>
-    <ManagedPath Condition="Exists('$(ResonitePath)Resonite_Data\Managed\')">$(ResonitePath)Resonite_Data\Managed\</ManagedPath>
+    <ResonitePath Condition="Exists('C:\Program Files (x86)\Steam\steamapps\common\Resonite\Headless\')">C:\Program Files (x86)\Steam\steamapps\common\Resonite\Headless\</ResonitePath>
+		<ResonitePath Condition="Exists('$(HOME)/.steam/steam/steamapps/common/Resonite/Headless/')">$(HOME)/.steam/steam/steamapps/common/Resonite/Headless/</ResonitePath>
   </PropertyGroup>
 
   <ItemGroup>
     <Reference Include="ResoniteModLoader">
-      <HintPath>$(ResonitePath)Libraries\ResoniteModLoader.dll</HintPath>
+      <HintPath>$(ResonitePath)Libraries/ResoniteModLoader.dll</HintPath>
+      <HintPath Condition="Exists('$(ResonitePath)../Libraries/ResoniteModLoader.dll')">$(ResonitePath)../Libraries/ResoniteModLoader.dll</HintPath>
     </Reference>
     <Reference Include="0Harmony">
       <HintPath>$(ResonitePath)0Harmony.dll</HintPath>
-      <HintPath Condition="Exists('$(ResonitePath)rml_libs\0Harmony.dll')">$(ResonitePath)rml_libs\0Harmony.dll</HintPath>
-      <HintPath Condition="Exists('$(ResonitePath)Libraries\0Harmony.dll')">$(ResonitePath)Libraries\0Harmony.dll</HintPath>
+      <HintPath Condition="Exists('$(ResonitePath)../rml_libs/0Harmony.dll')">$(ResonitePath)../rml_libs/0Harmony.dll</HintPath>
+      <HintPath Condition="Exists('$(ResonitePath)../Libraries/0Harmony.dll')">$(ResonitePath)../Libraries/0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="FrooxEngine">
-      <HintPath>$(ManagedPath)FrooxEngine.dll</HintPath>
+      <HintPath>$(ResonitePath)FrooxEngine.dll</HintPath>
     </Reference>
     <Reference Include="FrooxEngine.Weaver">
-      <HintPath>$(ManagedPath)FrooxEngine.Weaver.dll</HintPath>
+      <HintPath>$(ResonitePath)FrooxEngine.Weaver.dll</HintPath>
     </Reference>
     <Reference Include="Elements.Core">
-      <HintPath>$(ManagedPath)Elements.Core.dll</HintPath>
+      <HintPath>$(ResonitePath)Elements.Core.dll</HintPath>
     </Reference>
     <Reference Include="Elements.Assets">
-      <HintPath>$(ManagedPath)Elements.Assets.dll</HintPath>
+      <HintPath>$(ResonitePath)Elements.Assets.dll</HintPath>
     </Reference>
     <Reference Include="ArtfullySimple">
       <HintPath>$(ResonitePath)rml_libs\ArtfullySimple.dll</HintPath>
     </Reference>
     <Reference Include="HeadlessClient">
-      <HintPath>$(HeadlessPath)Resonite.exe</HintPath>
+      <HintPath>$(ResonitePath)Resonite.exe</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -57,9 +54,14 @@
     <!--Exec Command="C:\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite.exe -Screen -screen-fullscreen 1 -DontAutoOpenCloudHome -CachePath C:\Resonite\Cache -DataPath C:\Resonite\Data -CTAATemporalEdgePower 1.0 -CTAASharpnessEnabled False -CTAAAdaptiveSharpness 0.4 -LoadAssembly Libraries\ResoniteModLoader.dll" /-->
   </Target>
 
+  <Target Name="MoveBinary" AfterTargets="Publish">
+    <Copy SourceFiles="$(PublishDir)Nimbus.dll" DestinationFolder="." />
+  </Target>
+
   <Target Name="DeepClean">
     <RemoveDir Directories="./bin" />
     <RemoveDir Directories="./obj" />
+    <Delete Files="./Nimbus.dll" />
     <Exec Command="dotnet restore" />
   </Target>
 </Project>
