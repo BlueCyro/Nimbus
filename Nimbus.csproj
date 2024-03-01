@@ -57,7 +57,7 @@
     <!--Exec Command="C:\Program Files (x86)\Steam\steamapps\common\Resonite\Resonite.exe -Screen -screen-fullscreen 1 -DontAutoOpenCloudHome -CachePath C:\Resonite\Cache -DataPath C:\Resonite\Data -CTAATemporalEdgePower 1.0 -CTAASharpnessEnabled False -CTAAAdaptiveSharpness 0.4 -LoadAssembly Libraries\ResoniteModLoader.dll" /-->
   </Target>
 
-  <Target Name="CustomClean">
+  <Target Name="DeepClean">
     <RemoveDir Directories="./bin" />
     <RemoveDir Directories="./obj" />
     <Exec Command="dotnet restore" />
