@@ -40,9 +40,6 @@
     <Reference Include="Elements.Assets">
       <HintPath>$(ResonitePath)Elements.Assets.dll</HintPath>
     </Reference>
-    <Reference Include="ArtfullySimple">
-      <HintPath>$(ResonitePath)rml_libs\ArtfullySimple.dll</HintPath>
-    </Reference>
     <Reference Include="HeadlessClient">
       <HintPath>$(ResonitePath)Resonite.exe</HintPath>
     </Reference>
