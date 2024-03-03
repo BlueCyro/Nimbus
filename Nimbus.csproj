@@ -11,6 +11,7 @@
     <Product>Nimbus .NET 8 Compatibility Patches for Resonite Headless</Product>
     <Description>Adds patches to the Resonite Headless to enable greater compatibility with .NET 8</Description>
     <Copyright>Copyright (c) 2023 Riley Fields</Copyright>
+    <DocumentationFile>./Docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>
