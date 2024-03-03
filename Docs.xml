@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nimbus</name>
+    </assembly>
+    <members>
+        <member name="T:Nimbus.NET8_Helpers">
+            <summary>
+            Helpers for .NET 8 Compatibility
+            </summary>
+        </member>
+        <member name="F:Nimbus.NET8_Helpers.AssemblyQualifiers">
+            <summary>
+            New namespaces mapped to old qualifiers
+            </summary>
+        </member>
+        <member name="F:Nimbus.NET8_Helpers.TypeLookups">
+            <summary>
+            New types mapped to their legacy FullName
+            </summary>
+        </member>
+        <member name="M:Nimbus.NET8_Helpers.GetLegacy(System.Type)">
+            <summary>
+            Gets the legacy qualifier for types as they were .NET Framework
+            </summary>
+            <param name="type">The type to get the legacy FullName of</param>
+            <returns></returns>
+        </member>
+        <member name="T:Nimbus.Nimbus.SaveControl_Patches">
+            <summary>
+            Patches for SaveControl
+            </summary>
+        </member>
+        <member name="M:Nimbus.Nimbus.SaveControl_Patches.StoreTypeVersions_Transpiler(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction})">
+            <summary>
+            Patches the "SaveControl.StoreTypeVersions" method to store the legacy FullName
+            </summary>
+            <param name="instructions">Original code instructions</param>
+            <returns>Modified code instructions</returns>
+        </member>
+        <member name="T:Nimbus.Nimbus.Worker_Patches">
+            <summary>
+            Patches for Worker
+            </summary>
+        </member>
+        <member name="M:Nimbus.Nimbus.Worker_Patches.WorkerTypeName_Prefix(FrooxEngine.Worker,System.String@)">
+            <summary>
+            Patches the "Worker.WorkerTypeName" property to return the legacy FullName
+            </summary>
+            <param name="__instance"></param>
+            <param name="__result"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nimbus.Nimbus.WorkerManager_Patches">
+            <summary>
+            Patches for the WorkerManager
+            </summary>
+        </member>
+        <member name="M:Nimbus.Nimbus.WorkerManager_Patches.GetTypename_Prefix(System.String@,System.Type)">
+            <summary>
+            Patches the "WorkerManager.GetTypename method to return the legacy FullName
+            </summary>
+            <param name="__result">The result to change</param>
+            <param name="type">The type to get the name of</param>
+            <returns></returns>
+        </member>
+        <member name="T:Nimbus.Nimbus.ThreadWorker_Patches">
+            <summary>
+            Patches for the the ThreadWorker
+            </summary>
+        </member>
+        <member name="M:Nimbus.Nimbus.ThreadWorker_Patches.Abort_Transpiler(System.Collections.Generic.IEnumerable{HarmonyLib.CodeInstruction})">
+            <summary>
+            Patches "ThreadWorker.Abort" to call Thread.Interrupt instead of the deprecated Thread.Abort method
+            </summary>
+            <param name="instructions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nimbus.Nimbus.ThreadWorker_Patches.JobWorker_Finalizer(System.Exception)">
+            <summary>
+            Finalizes the "WorkProcessor.JobWorker" method to swallow exceptions that arise from using Thread.Interrupt
+            </summary>
+            <param name="__exception">The exception to swallow</param>
+            <returns>The exception to re-throw</returns>
+        </member>
+    </members>
+</doc>
