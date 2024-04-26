@@ -64,6 +64,21 @@
             <param name="type">The type to get the name of</param>
             <returns></returns>
         </member>
+        <member name="M:Nimbus.Nimbus.WorkerManager_Patches.GetType_Postfix(System.String,System.Type@)">
+            <summary>
+            Patches <see cref="M:FrooxEngine.WorkerManager.GetType(System.String)"/> to use a versionless check in case a type with a newer assembly version is received.
+            </summary>
+            <param name="__result">The result passed to the postfix. If the result is null, a version-less check is performed instead.</param>
+            <param name="typename">The type to attempt parsing</param>
+        </member>
+        <member name="M:Nimbus.Nimbus.WorkerManager_Patches.GetType(System.String)">
+            <summary>
+            The original <see cref="M:FrooxEngine.WorkerManager.GetType(System.String)"/> method without any patches applied
+            </summary>
+            <param name="typename">Type name to attempt parsing</param>
+            <returns>Parsed type</returns>
+            <exception cref="T:System.NotImplementedException">Thrown if the reverse patch has failed</exception>
+        </member>
         <member name="T:Nimbus.Nimbus.ThreadWorker_Patches">
             <summary>
             Patches for the the ThreadWorker

@@ -103,7 +103,7 @@ public static class NET8_Helpers
     public static string GetLegacy(this Type type)
     {
         // Check the cache first, then construct one if it's not in the cache yet
-        if (TypeLookups.TryGetValue(type, out string typeName))
+        if (TypeLookups.TryGetValue(type, out string? typeName))
         {
             // Nimbus.Debug($"Got cache hit for {type.FullName}! Legacy is: {typeName}!");
             return typeName;
