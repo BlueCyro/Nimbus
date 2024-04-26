@@ -11,7 +11,7 @@ public partial class Nimbus : ResoniteMod
 {
     public override string Name => "Nimbus";
     public override string Author => "Cyro";
-    public override string Version => "1.0.0";
+    public override string Version => typeof(Nimbus).Assembly.GetName().Version!.ToString();
     public override string Link => "https://www.github.com/RileyGuy/Nimbus";
     public static ModConfiguration? Config;
 
@@ -25,13 +25,13 @@ public partial class Nimbus : ResoniteMod
         harmony.PatchAll();
 
         // The ThreadWorker's Abort() method
-        MethodInfo threadWorkerAbort = 
+        MethodInfo? threadWorkerAbort = 
             typeof(WorkProcessor)
-            .GetNestedType("ThreadWorker", BindingFlags.Instance | BindingFlags.NonPublic)
+            .GetNestedType("ThreadWorker", BindingFlags.Instance | BindingFlags.NonPublic)?
             .GetMethod("Abort");
         
         // The WorkProcessor's JobWorker() method
-        MethodInfo workProcessorJobWorker =
+        MethodInfo? workProcessorJobWorker =
             typeof(WorkProcessor)
             .GetMethod("JobWorker", BindingFlags.Instance | BindingFlags.NonPublic);
 
