@@ -12,7 +12,7 @@ public partial class Nimbus : ResoniteMod
     public override string Name => "Nimbus";
     public override string Author => "Cyro";
     public override string Version => typeof(Nimbus).Assembly.GetName().Version!.ToString();
-    public override string Link => "https://www.github.com/RileyGuy/Nimbus";
+    public override string Link => "https://github.com/BlueCyro/Nimbus/";
     public static ModConfiguration? Config;
 
 
